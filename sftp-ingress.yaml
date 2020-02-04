@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: citrix-ingress
+  annotations:
+   kubernetes.io/ingress.class: "sftp-cpx"
+#   ingress.citrix.com/insecure-termination: "allow"
+   ingress.citrix.com/insecure-port: "80"
+spec:
+   backend:
+     serviceName: sftp
+     servicePort: 22
+---

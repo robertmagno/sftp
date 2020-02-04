@@ -1,0 +1,20 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: vpx-ingress
+  annotations:
+   kubernetes.io/ingress.class: "tier-1-vpx"
+   ingress.citrix.com/insecure-termination: "allow"
+   ingress.citrix.com/insecure-port: "22"
+   ingress.citrix.com/frontend-ip: "192.168.3.21"
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - path:
+        backend:
+          serviceName: cpx-ingress
+          servicePort: 80
+---
